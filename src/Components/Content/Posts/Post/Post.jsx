@@ -1,9 +1,14 @@
 import s from './Post.module.css'
 
-const Post = () => {
+const Post = (props) => {
   return (
     <div className={s.post}>
-      post
+      <div>
+        Post: {props.name}
+      </div>
+      <div>
+        likes: {props.like}
+      </div>
     </div>
   );
 }

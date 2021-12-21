@@ -1,4 +1,14 @@
 .main_navbar {
   background-color: #61dafb;
   grid-area: navbar;
+  display: flex;
+  flex-direction: column;
+}
+.main_navbar__link {
+  text-decoration: none;
+  color: white;
+}
+.active {
+  text-decoration: none;
+  color: tomato;
 }

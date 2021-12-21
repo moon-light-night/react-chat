@@ -4,3 +4,6 @@
 .profile_name {
   font-size: 20px;
 }
+.profile_cover {
+  max-width: 100%;
+}
