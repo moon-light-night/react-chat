@@ -1,8 +1,8 @@
 // import logo from './logo.svg';
 import './App.css';
-import Navbar from './Components/Navbar';
-import Header from './Components/Header';
-import Profile from './Components/Profile';
+import Navbar from './Components/Navbar/Navbar';
+import Header from './Components/Header/Header';
+import Content from './Components/Content/Content';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
 
       <Navbar />
 
-      <Profile />
+      <Content />
 
     </div>
   );

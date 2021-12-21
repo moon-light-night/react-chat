@@ -1,6 +1,8 @@
+import s from './Navbar.module.css'
+
 const Navbar = () => {
   return (
-    <div className="main-navbar">
+    <div className={s.main_navbar}>
       <ul className="no-list-style-type">
         <li>
           Profile

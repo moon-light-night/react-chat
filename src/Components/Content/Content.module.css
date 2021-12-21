@@ -1,0 +1,7 @@
+.main-content {
+  background-color: burlywood;
+  grid-area: content;
+}
+.main-content__cover img {
+  max-width: 100%;
+}
