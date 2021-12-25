@@ -1,9 +1,13 @@
 import s from './Messages.module.css'
 
+const a = 'hello'
+const el = <div className={s.hi}>element</div>
+
 const Messages = () => {
   return (
     <div className={s.messages}>
-      messages
+      messages, {a}!<br/>
+      {el}
     </div>
   );
 }

@@ -4,11 +4,19 @@ const Post = (props) => {
   return (
     <div className={s.post}>
       <div>
-        Post: {props.name}
+        <div style={{color: 'black'}}>
+          {props.post.id}
+        </div>
+        <div>
+          {props.post.title}
+        </div>
+        <div>
+          {props.post.body}
+        </div>
       </div>
-      <div>
-        likes: {props.like}
-      </div>
+      <button>
+        Delete post
+      </button>
     </div>
   );
 }

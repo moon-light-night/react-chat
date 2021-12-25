@@ -7,3 +7,9 @@
 .profile_cover {
   max-width: 100%;
 }
+.add_post {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 0 30px;
+}

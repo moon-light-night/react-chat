@@ -1,13 +1,18 @@
 import Post from './Post/Post';
 import s from './Posts.module.css'
 
-const Posts = () => {
+const Posts = ({posts, title}) => {
+
   return (
-    <div className={s.posts}>
-      <Post name="post 1" like="5" />
-      <Post name="post 2" like="7" />
-      <Post name="post 3" like="10" />
-      <Post name="post 4" like="2" />
+    <div>
+      <div style={{textAlign: 'center', margin: '0 0 20px'}}>
+        {title}
+      </div>
+      <div className={s.posts}>
+        {posts.map(post => 
+          <Post post={post} key={post.id} />
+        )}
+      </div>
     </div>
   );
 }
