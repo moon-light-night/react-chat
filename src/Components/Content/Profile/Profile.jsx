@@ -3,8 +3,7 @@ import Posts from '../Posts/Posts';
 import cover from '../../../cover.jpg'
 import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
-import Button from '../../UI/Buttons/Button';
-import Input from '../../UI/Inputs/Input';
+import Form from '../../UI/Forms/Form';
 
 const Profile = () => {
 
@@ -14,22 +13,16 @@ const Profile = () => {
     { id: 3, title: 'title 3', body: 'body 3'},
     { id: 4, title: 'title 4', body: 'body 4'}
   ])
-  const [post, setPost] = useState({
-    title: '',
-    body: ''
-  })
+
+  const createPost = (newPost) => {
+    setPosts([...posts, newPost])
+  }
+
+  const removePost = (post) => {
+    setPosts(posts.filter(p => p.id !== post.id))
+  }
   
   // const bodyInputRef = useRef()
-
-  const addPost = (e) => {
-    e.preventDefault()
-    setPosts([...posts, { ...post, id: Date.now() }])
-    setPost({
-      title: '',
-      body: ''
-    })
-    // console.log(bodyInputRef.current.value)
-  }
 
   return (
     <div className={s.profile}>
@@ -39,15 +32,16 @@ const Profile = () => {
         ava + descr
       </div>
       <div className={s.add_post}>
-        <form>
-          {/* <input ref={bodyInputRef} type="text" /> */}
-          {/* <Input type="text" ref={bodyInputRef} /> */}
-          <Input value={post.title} type="text" onChange={e => setPost({ ...post, title: e.target.value})} />
-          <Input value={post.body} onChange={e => setPost({ ...post, body: e.target.value})} type="text" />
-          <Button type="submit" onClick={addPost} >Add post</Button>
-        </form>
+        <Form create={createPost} />
       </div>
-      <Posts posts={posts} title="Posts list" />
+      {posts.length
+        ?
+        <Posts remove={removePost} posts={posts} title="Posts list" />
+        :
+        <div className={s.empty_posts_label}>
+          Posts not found
+        </div>
+      }
     </div>
   );
 }

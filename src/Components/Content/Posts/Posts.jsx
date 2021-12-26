@@ -1,7 +1,7 @@
 import Post from './Post/Post';
 import s from './Posts.module.css'
 
-const Posts = ({posts, title}) => {
+const Posts = ({posts, title, remove}) => {
 
   return (
     <div>
@@ -9,8 +9,8 @@ const Posts = ({posts, title}) => {
         {title}
       </div>
       <div className={s.posts}>
-        {posts.map(post => 
-          <Post post={post} key={post.id} />
+        {posts.map((post, index) => 
+          <Post remove={remove} post={post} key={post.id} index={index} />
         )}
       </div>
     </div>

@@ -1,22 +1,22 @@
+import Button from '../../../UI/Buttons/Button';
 import s from './Post.module.css'
 
-const Post = (props) => {
+const Post = ({post, remove, index}) => {
+
   return (
     <div className={s.post}>
       <div>
         <div style={{color: 'black'}}>
-          {props.post.id}
+          {index + 1}
         </div>
         <div>
-          {props.post.title}
+          {post.title}
         </div>
         <div>
-          {props.post.body}
+          {post.body}
         </div>
       </div>
-      <button>
-        Delete post
-      </button>
+      <Button onClick={() => remove(post)}>Delete post</Button>
     </div>
   );
 }
