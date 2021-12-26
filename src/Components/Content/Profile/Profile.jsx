@@ -4,6 +4,7 @@ import cover from '../../../cover.jpg'
 import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
 import Form from '../../UI/Forms/Form';
+import Select from '../../UI/Selects/Select';
 
 const Profile = () => {
 
@@ -13,6 +14,7 @@ const Profile = () => {
     { id: 3, title: 'title 3', body: 'body 3'},
     { id: 4, title: 'title 4', body: 'body 4'}
   ])
+  const [selectedSort, setSelectedSort] = useState('')
 
   const createPost = (newPost) => {
     setPosts([...posts, newPost])
@@ -20,6 +22,11 @@ const Profile = () => {
 
   const removePost = (post) => {
     setPosts(posts.filter(p => p.id !== post.id))
+  }
+
+  const sortPosts = (sortValue) => {
+    setSelectedSort(sortValue)
+    setPosts([...posts].sort((a, b) => a[sortValue].localeCompare(b[sortValue])))
   }
   
   // const bodyInputRef = useRef()
@@ -34,6 +41,19 @@ const Profile = () => {
       <div className={s.add_post}>
         <Form create={createPost} />
       </div>
+      <hr style={{'margin': '15px 0'}} />
+      <div>
+        <Select 
+          options={[
+            {value: 'title', name: 'Sort by title'},
+            {value: 'body', name: 'Sort by body'}
+          ]}
+          defaultOption='Sorting'
+          value={selectedSort}
+          onChange={sortPosts}
+        />
+      </div>
+      <hr style={{'margin': '15px 0'}} />
       {posts.length
         ?
         <Posts remove={removePost} posts={posts} title="Posts list" />
